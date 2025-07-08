@@ -7,6 +7,12 @@ import { checkAdmin } from '../middlewares/checkAdmin.js'
 
 const modifierRouter = Router()
 
+//Les controllers sont toujours le dernier paramètre passé 
+//authMiddlewaire est un middlewaire qui viens vérifier si le client est auuthentifié 
+//checkAdmin est un middlewaire qui viens vérifier si le client est un Admin
+//upload.single('image') est un middlewaire permetant d'upload une image
+
+
 modifierRouter.get('/modifier', getAllModifiers)
 
 modifierRouter.post('/modifier', upload.single('image'), authMiddleware, checkAdmin, createModifier)

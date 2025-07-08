@@ -1,13 +1,17 @@
 import Product from "../models/Product.js"
 
+// Création d’un nouveau produit (réservé admin)
 export const createProduct = async (req, res) => {
+    // Récupération des infos dans le body
     const { name, description, ingredients, allergens, price, available, category, modifiers } = req.body
 
     try {
+        // Si aucune image n'est envoyée, on met une image par défaut
         const imagePath = req.file
         ? `public/images/${req.file.filename}`
         : 'public/images/default.jpeg'
 
+        // Créaion d'un produit
         const newProduct = new Product({
             name,
             description,
@@ -29,6 +33,7 @@ export const createProduct = async (req, res) => {
     }
 }
 
+// Récupération de toutes les produits (route publique)
 export const getAllProducts = async (req, res) => {
     try {
         const products = await Product.find().populate('category')
@@ -40,6 +45,7 @@ export const getAllProducts = async (req, res) => {
     }
 }
 
+// Récupération d'un produit par son ID
 export const getProductById = async (req, res) => {
     const { id } = req.params
 
@@ -60,6 +66,7 @@ export const getProductById = async (req, res) => {
     }
 }
 
+//Modification d'un produit 
 export const updateProduct = async (req, res) => {
     const { id } = req.params
     const { name, description, ingredients, allergens, price, available, category, modifiers } = req.body
@@ -80,7 +87,9 @@ export const updateProduct = async (req, res) => {
         updateData.image = 'public/images/' + req.file.filename
         }
 
+        // Mise à jour du produit
         const updated = await Product.findByIdAndUpdate(id, updateData, { new: true })
+
 
         if (!updated) {
         return res.status(404).json('Produit introuvable')
@@ -94,6 +103,7 @@ export const updateProduct = async (req, res) => {
     }
 }
 
+// Suppression d’une catégorie produit avec la même logique que pour la suppression(réservé admin)
 export const deleteProduct = async (req, res) => {
     const { id } = req.params
 

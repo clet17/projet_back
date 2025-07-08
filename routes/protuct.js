@@ -6,6 +6,12 @@ import { checkAdmin } from '../middlewares/checkAdmin.js'
 
 const productRouter = Router()
 
+//Les controllers sont toujours le dernier paramètre passé 
+//authMiddlewaire est un middlewaire qui viens vérifier si le client est auuthentifié 
+//checkAdmin est un middlewaire qui viens vérifier si le client est un Admin
+//upload.single('image') est un middlewaire permetant d'upload une image
+
+
 productRouter.get('/product', getAllProducts)
 productRouter.get('/product/:id', getProductById)
 

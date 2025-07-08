@@ -25,8 +25,9 @@ Application web de gestion de restaurant rapide avec back-office administrateur,
 - Upload d’image : Multer (stockage local temporaire)
 - Déploiement backend : Railway  
   https://projetback-production-d8bd.up.railway.app
-- Déploiement frontend : Netlify
-- Frontend : React + Vite
+- Déploiement frontend : Netlify 
+  https://zidleb.netlify.app/
+- Frontend : React + Vite 
 
 
 
@@ -36,6 +37,24 @@ git clone https://github.com/clet17/projet_back
 npm install
 npm run dev
 rajouter "type": "module" dans le package.json 
+Crée un fichier .env en suivant ce qui est dans le .env.exemple
+
+
+Structure du projet
+
+controllers/ → Logique métier (création utilisateur, gestion des commandes, paiements…)
+
+database/ → Connexion à la base de données MongoDB (client.js)
+
+middlewares/ → Vérification d'authentification , de l'admin et upload d'image
+
+public/ → Dossier de stockage temporaire pour images
+
+routes/ → routes API express
+
+utils/ → Fonctions utilitaires
+
+
 
 ## Dépendances
 

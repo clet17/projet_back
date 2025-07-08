@@ -24,7 +24,7 @@ const productOrderSchema = new Schema({
       ref: 'Modifier'
     }
   ]
-}, { _id: false }) // désactive l’_id automatique pour chaque sous-doc, tu peux mettre à true si tu veux
+}, { _id: false })
 
 const orderSchema = new Schema({
   order_date: {

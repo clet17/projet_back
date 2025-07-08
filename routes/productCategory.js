@@ -5,6 +5,10 @@ import { upload } from "../middlewares/uploadFile.js"
 import { authMiddleware } from "../middlewares/authMiddleware.js"
 import { checkAdmin } from "../middlewares/checkAdmin.js"
 
+//Les controllers sont toujours le dernier paramètre passé 
+//authMiddlewaire est un middlewaire qui viens vérifier si le client est auuthentifié 
+//checkAdmin est un middlewaire qui viens vérifier si le client est un Admin
+//upload.single('image') est un middlewaire permetant d'upload une image
 
 
 const productCategoryRouter = Router()
