@@ -1,8 +1,9 @@
+import { sanitizeFilter } from "mongoose"
 import Order from "../models/Order.js"
 
 // Création d'une nouvelle commande
 export const createOrder = async (req, res) => {
-    const body = sanitizeInputs(req.body)
+    const body = sanitizeFilter(req.body)
     // Récupération des informations dans le body
     const { total_price, product_orders } = body
     // Récupération de l'id utilisateur transmis par le middleware d'authentification
