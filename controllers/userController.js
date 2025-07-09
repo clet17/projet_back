@@ -1,3 +1,4 @@
+import { sanitizeFilter } from 'mongoose'
 import User from '../models/User.js'
 
 // Récupération des informations de l'utilisateur connecté (via le token)
@@ -20,7 +21,7 @@ export const getUser = async (req, res) => {
 
 // Mise à jour des informations de l'utilisateur connecté (hors mot de passe)
 export const updateUser = async (req, res) => {
-  const body = sanitizeInputs(req.body)
+  const body = sanitizeFilter(req.body)
   // Récupération des données envoyées dans le body
   const { first_name, last_name, phone, address } = body
 
